@@ -1,1 +1,122 @@
-<p>defer-options works!</p>
+<app-title title="Defer Triggers " />
+
+
+<section>
+    <!-- 
+        interaction will trigger if click event or keydown happens on the elemenet
+    -->
+    <h1 class="text-xl">Interactions</h1>
+    <hr class="my-2">
+
+    @defer( on interaction) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
+
+<section>
+    <!-- I can also trigger it using a local referenfe from other element -->
+    <button
+        #btnInteractions
+        class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2"
+    >
+        Click me
+    </button>
+    <hr class="my-2">
+
+    @defer( on interaction(btnInteractions)) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
+
+
+<section>
+    <!-- 
+        On hover
+    -->
+    <p class="text-xl">Hover</p>
+    <hr class="my-2">
+
+    @defer( on hover) {
+        <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
+
+<section>
+    <!-- I can also trigger it using a local referenfe from other element -->
+    <span
+        #btnHover
+        class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white mt-2"
+    >
+        Hover me
+    </span>
+    <hr class="my-2">
+
+    @defer( on hover(btnHover)) {
+        <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
+
+<section>
+    <!-- 
+        On immediate this will happens as soon as posible
+    -->
+    <p class="text-xl">Immediate</p>
+    <hr class="my-2">
+
+    @defer( on immediate) {
+        <app-heavy-loaders-fast cssClass="bg-red-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
+
+<section>
+    <!-- 
+        On timer like a timeout
+    -->
+    <p class="text-xl">Timer</p>
+    <hr class="my-2">
+
+    @defer( on timer(2000)) {
+        <app-heavy-loaders-fast cssClass="bg-purple-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
+
+<section>
+    <!-- 
+        can also be combined 
+        prefetch preload the component
+    -->
+    <p class="text-xl">On hover, idle</p>
+    <hr class="my-2">
+
+    @defer( on hover; prefetch on idle) {
+        <app-heavy-loaders-fast cssClass="bg-purple-500 h-20">
+            <span>On Interactions</span>
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <p>Interaction block loading...</p>
+    }
+</section>
