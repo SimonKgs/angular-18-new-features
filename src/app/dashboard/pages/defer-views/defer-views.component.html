@@ -1,1 +1,31 @@
-<p>defer-views works!</p>
+<app-title title="Defer Views Block" />
+<section>
+    <!-- 
+    Defer is like a lazy load of a component
+    I can add a placeholder to use while it is loading
+    It also accepts sonme properties to trigger when or on a moment
+    so the component will load only when it mathc the condition
+    eg: on viewport will only load the component when it is on screen
+    -->
+    @defer () {
+        <app-heavy-loaders-slow cssClass="bg-blue-500"/>
+    } @placeholder {
+        <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+            Loading...
+        </p>
+    }
+    @defer (on viewport) {
+        <app-heavy-loaders-slow cssClass="bg-green-500"/>
+    } @placeholder {
+        <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+            Loading...
+        </p>
+    }
+    @defer (on viewport) {
+        <app-heavy-loaders-slow cssClass="bg-purple-500"/>
+    } @placeholder {
+        <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+            Loading...
+        </p>
+    }
+</section>
